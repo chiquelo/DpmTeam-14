@@ -1,6 +1,5 @@
 
 
-import java.util.LinkedList;
 
 public class Map {
 	private static Tiles [][] tiles;
@@ -9,8 +8,11 @@ public class Map {
 	public static void main(String[]args){
 		int [] obstacles = {1,7,8,14,21,34,56,67,78,89,90,100,112,113};
 		Map map = new Map(obstacles);
-		printMapObstacles(map);
+		//printMapObstacles(map);
 		
+		GraphGenerator gg = new GraphGenerator(map);
+		gg.createGraph();
+		gg.printGraph();
 	}
 	public Map(int [] obstacles){
 		

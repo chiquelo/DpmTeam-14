@@ -85,7 +85,7 @@ public class Tiles {
 		y = yC;
 	}
 	
-	public void generatePos(int r, int c){
+	public void generatePos(int r, int c){ 
 		positions = new Arrow[4];
 		
 		positions[0] = new Arrow(r, c, 'n');
