@@ -24,11 +24,9 @@ public class Map {
 		tiles = new Tiles[12][12];
 		
 		
-		Tiles tile;
 		for(int i = 0; i < tiles.length; i++){
 			for(int j = 0; j < tiles[i].length; j++){
-				tile = new Tiles(count,false);
-				tiles[i][j] = tile;
+				tiles[i][j] = new Tiles(count,false);
 				count ++;
 			}
 		}

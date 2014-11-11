@@ -31,7 +31,7 @@ public class GraphGenerator {
 					}
 
 					if (j != col - 1 && !tile[i][j + 1].getIsObstacle()) {
-						tile[i][j].adjList.add(tile[i-1][j + 1]);
+						tile[i][j].adjList.add(tile[i][j + 1]);
 					}
 				}
 				
