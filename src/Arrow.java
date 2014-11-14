@@ -1,4 +1,4 @@
-
+package Lab5;
 /*
  * Arrow is an available position for the robot
  * Arrow is usually defined by the row and column of the block where it is, and it's orientation (north, west, south. east)
@@ -6,7 +6,7 @@
 
 public class Arrow {
 	private int row, column;
-	private char point;	//checks where arrow is poiting (north, east, south or west)
+	private char point;	//checks where arrow is pointing (north, east, south or west)
 	private Arrow next;
 	private double x, y, theta;
 
@@ -14,7 +14,8 @@ public class Arrow {
 		row = r;
 		column = c;
 		point = p;
-		next = this;	//next points to the latest arrow for the robot to check
+		next = this;
+		//next points to the latest arrow for the robot to check
 		/*
 		 * When a robot turns or moves forward, our algorithm only check if the next arrow can be correctly updated
 		 * Based on this result, our algorithm either removes the current arrow from the possible solutions or updates the "next" arrow

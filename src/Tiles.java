@@ -1,29 +1,25 @@
-import java.util.LinkedList;
-
-
+package Lab5;
 
 public class Tiles {
 	
 	private int x;
 	private int y;
-	public boolean isVisited;	//used in BFS
-	public LinkedList<Tiles> adjList;	//to represent a graph using adjacency list
+	
 	private static Arrow[] positions;
 	
-	//variable keeping track whether there are obstacles in the 4 tiles surrounding current tile
-	private boolean [] obstacles = new boolean[4];
+	//variable keeping track whether there are hasBlock in the 4 tiles surrounding current tile
+	private boolean [] hasBlock = new boolean[4];
 	//tile number from 1 to max size of board
 	private int tileNumber;
 	//variable keeping track whether or not tile is an obstacle
 	private boolean isObstacle = false;
+	// arrows of tiles
 	
 	public Tiles(int tileNumber, boolean isObstacle){
-		adjList = new LinkedList<Tiles>();
-		isVisited = false;
 		this.tileNumber = tileNumber;
 		this.isObstacle = isObstacle;
 		for(int i=0; i<4; i++){
-			this.obstacles[i] = false;
+			this.hasBlock[i] = false;
 		}
 		int count = 1;
 		for(int i = 0; i < 4; i++){
@@ -38,13 +34,13 @@ public class Tiles {
 	}
 	
 	public boolean[] getObstacles(){
-		return obstacles;
+		return hasBlock;
 	}
 	
 	
 	public void setObstacles(int index, boolean yolo){
 		if(index < 4){
-			obstacles[index] = yolo;
+			hasBlock[index] = yolo;
 		}
 		else return;
 	}
@@ -58,6 +54,9 @@ public class Tiles {
 	}
 	public void setBlock(){
 		isObstacle = true;
+		for(int i = 0; i < 4 ; i++){
+			hasBlock[i] = true;
+		}
 	}
 	
 	public String coordinate(int index){
@@ -72,6 +71,22 @@ public class Tiles {
 		else
 			return "You're drunk, go home";
 	}
+	public boolean isNorth() {
+		return hasBlock[0];
+	}
+
+	public boolean isEast() {
+		return hasBlock[3];
+	}
+
+	public boolean isWest() {
+		return hasBlock[1];
+	}
+
+	public boolean isSouth() {
+		return hasBlock[2];
+	}
+	
 	public int getX(){
 		return x;
 	}
@@ -84,8 +99,7 @@ public class Tiles {
 	public void setY(int yC){
 		y = yC;
 	}
-	
-	public void generatePos(int r, int c){ 
+	public void generatePos(int r, int c){
 		positions = new Arrow[4];
 		
 		positions[0] = new Arrow(r, c, 'n');
@@ -94,7 +108,9 @@ public class Tiles {
 		positions[3] = new Arrow(r, c, 'e');
 	}
 	
-	public Arrow[] getPositionsArrows(){
-		return positions;
+	public Arrow getPositionsArrows(int index){
+		if(index >= 0 || index <= 3)
+			return positions[index];
+		return null;
 	}
 }
